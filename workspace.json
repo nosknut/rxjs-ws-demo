@@ -2,6 +2,7 @@
   "$schema": "./node_modules/nx/schemas/workspace-schema.json",
   "version": 2,
   "projects": {
+    "api": "apps/api",
     "rxjs-ws-demo": "apps/rxjs-ws-demo",
     "rxjs-ws-demo-e2e": "apps/rxjs-ws-demo-e2e"
   }

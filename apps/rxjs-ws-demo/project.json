@@ -51,7 +51,8 @@
       "defaultConfiguration": "development",
       "options": {
         "buildTarget": "rxjs-ws-demo:build",
-        "hmr": true
+        "hmr": true,
+        "proxyConfig": "apps/rxjs-ws-demo/proxy.conf.json"
       },
       "configurations": {
         "development": {
