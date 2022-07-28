@@ -47,6 +47,8 @@ const reportJobProgress = (id: string, progress: number) => {
 };
 
 const startTimedJob = async (id: string, times: number) => {
+  // Report 0% progress right away so the user knows the job has started
+  reportJobProgress(id, 0);
   for (let i = 0; i < times; i += 5) {
     await delay(1000);
     console.log('update');
