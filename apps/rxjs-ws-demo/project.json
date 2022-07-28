@@ -1,0 +1,83 @@
+{
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/rxjs-ws-demo/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/web:webpack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "compiler": "babel",
+        "outputPath": "dist/apps/rxjs-ws-demo",
+        "index": "apps/rxjs-ws-demo/src/index.html",
+        "baseHref": "/",
+        "main": "apps/rxjs-ws-demo/src/main.tsx",
+        "polyfills": "apps/rxjs-ws-demo/src/polyfills.ts",
+        "tsConfig": "apps/rxjs-ws-demo/tsconfig.app.json",
+        "assets": [
+          "apps/rxjs-ws-demo/src/favicon.ico",
+          "apps/rxjs-ws-demo/src/assets"
+        ],
+        "styles": ["apps/rxjs-ws-demo/src/styles.scss"],
+        "scripts": [],
+        "webpackConfig": "@nrwl/react/plugins/webpack"
+      },
+      "configurations": {
+        "development": {
+          "extractLicenses": false,
+          "optimization": false,
+          "sourceMap": true,
+          "vendorChunk": true
+        },
+        "production": {
+          "fileReplacements": [
+            {
+              "replace": "apps/rxjs-ws-demo/src/environments/environment.ts",
+              "with": "apps/rxjs-ws-demo/src/environments/environment.prod.ts"
+            }
+          ],
+          "optimization": true,
+          "outputHashing": "all",
+          "sourceMap": false,
+          "namedChunks": false,
+          "extractLicenses": true,
+          "vendorChunk": false
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/web:dev-server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "rxjs-ws-demo:build",
+        "hmr": true
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "rxjs-ws-demo:build:development"
+        },
+        "production": {
+          "buildTarget": "rxjs-ws-demo:build:production",
+          "hmr": false
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/rxjs-ws-demo/**/*.{ts,tsx,js,jsx}"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/rxjs-ws-demo"],
+      "options": {
+        "jestConfig": "apps/rxjs-ws-demo/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}
